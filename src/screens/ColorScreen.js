@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { FlatList } from "react-native-gesture-handler";
 
 const ColorScreen = () => {
   const [colors, setColors] = useState([]);
@@ -17,7 +18,15 @@ const ColorScreen = () => {
         title="Add color"
         onPress={() => setColors([...colors, randomRgb()])}
       />
-      <View style={{ width: 100, height: 100, backgroundColor: randomRgb() }} />
+      <FlatList
+        data={colors}
+        keyExtractor={(indexes) => indexes}
+        renderItem={({ item }) => {
+          return (
+            <View style={{ width: 100, height: 100, backgroundColor: item }} />
+          );
+        }}
+      />
     </View>
   );
 };
