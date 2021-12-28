@@ -9,22 +9,53 @@ const SquareScreen = () => {
 
   const COLOR_DEPTH = 20;
 
+  const setColor = (color, change) => {
+    switch (color) {
+      case "red":
+        if (red + change > 255 || red + change < 0) {
+          return;
+        } else {
+          setRed(red + change);
+        }
+        return;
+
+      case "green":
+        if (green + change > 255 || green + change < 0) {
+          return;
+        } else {
+          setGreen(green + change);
+        }
+        return;
+
+      case "blue":
+        if (blue + change > 255 || blue + change < 0) {
+          return;
+        } else {
+          setBlue(blue + change);
+        }
+        return;
+
+      default:
+        return;
+    }
+  };
+
   return (
     <View>
       <SquareCounter
         color="Red"
-        onIncrease={() => setRed(red + COLOR_DEPTH)}
-        onDecrease={() => setRed(red - COLOR_DEPTH)}
+        onIncrease={() => setColor("red", COLOR_DEPTH)}
+        onDecrease={() => setColor("red", -1 * COLOR_DEPTH)}
       />
       <SquareCounter
         color="Green"
-        onIncrease={() => setGreen(green + COLOR_DEPTH)}
-        onDecrease={() => setGreen(green - COLOR_DEPTH)}
+        onIncrease={() => setColor("green", COLOR_DEPTH)}
+        onDecrease={() => setColor("green", -1 * COLOR_DEPTH)}
       />
       <SquareCounter
         color="Blue"
-        onIncrease={() => setBlue(blue + COLOR_DEPTH)}
-        onDecrease={() => setBlue(blue - COLOR_DEPTH)}
+        onIncrease={() => setColor("blue", COLOR_DEPTH)}
+        onDecrease={() => setColor("blue", -1 * COLOR_DEPTH)}
       />
       <View
         style={{
