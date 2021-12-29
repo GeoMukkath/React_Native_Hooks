@@ -13,7 +13,7 @@ const TextScreen = () => {
         value={name}
         onChangeText={(newVal) => setName(newVal)}
       />
-      <Text>My name is {name}</Text>
+      {name.length <= 3 ? <Text>Name must be in full</Text> : null}
     </View>
   );
 };
