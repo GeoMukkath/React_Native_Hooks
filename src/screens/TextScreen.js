@@ -19,6 +19,7 @@ const TextScreen = () => {
 };
 
 const View = styled.View``;
+
 const TextInput = styled.TextInput`
   height: 50px;
   border: 1px solid black;
