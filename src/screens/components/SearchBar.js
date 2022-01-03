@@ -1,8 +1,12 @@
 import React from "react";
-import SearchField from "../../../styles";
+import { View, SearchField } from "../../../styles";
 
 const SearchBar = () => {
-  return <SearchField />;
+  return (
+    <View>
+      <SearchField />
+    </View>
+  );
 };
 
 export default SearchBar;
