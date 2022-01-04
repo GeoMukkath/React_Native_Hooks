@@ -6,21 +6,26 @@ import SearchBar from "./components/SearchBar";
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const searchApi = async () => {
-    const response = await yelp.get("/search", {
-      params: {
-        limit: 50,
-        term,
-        location: "san jose",
-      },
-    });
-    setResults(response.data.businesses);
+    try {
+      const response = await yelp.get("/search", {
+        params: {
+          limit: 50,
+          term,
+          location: "san jose",
+        },
+      });
+      setResults(response.data.businesses);
+    } catch (e) {
+      setErrorMessage("Oops something went wrong.");
+    }
   };
 
   return (
     <View>
-      <Text>Search Screen</Text>
+      {errorMessage ? <Text>{errorMessage}</Text> : null}
       <SearchBar
         term={term}
         onTermChange={(newTerm) => setTerm(newTerm)}
