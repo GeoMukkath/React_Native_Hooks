@@ -1,27 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import yelp from "../screens/api/yelp";
 import SearchBar from "./components/SearchBar";
+import useResults from "./hooks/useResults";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
-  const [results, setResults] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const searchApi = async (searchTerm) => {
-    try {
-      const response = await yelp.get("/search", {
-        params: {
-          limit: 50,
-          term: searchTerm,
-          location: "san jose",
-        },
-      });
-      setResults(response.data.businesses);
-    } catch (e) {
-      setErrorMessage("Oops something went wrong.");
-    }
-  };
+  const [searchApi, results, errorMessage] = useResults();
 
   return (
     <View>
