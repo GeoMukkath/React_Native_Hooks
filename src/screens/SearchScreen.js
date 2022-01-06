@@ -3,10 +3,17 @@ import styled from "styled-components";
 import yelp from "../screens/api/yelp";
 import SearchBar from "./components/SearchBar";
 import useResults from "./hooks/useResults";
+import ResultsList from "./components/ResultsList";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
   const [searchApi, results, errorMessage] = useResults();
+
+  const filterResults = (price) => {
+    return results.filter((result) => {
+      return result.price === price;
+    });
+  };
 
   return (
     <View>
@@ -17,6 +24,9 @@ const SearchScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       <Text>We have found {results.length} results for your search term.</Text>
+      <ResultsList result={filterResults("$")} title="Cost Effective" />
+      <ResultsList result={filterResults("$$")} title="Bit Pricier" />
+      <ResultsList result={filterResults("$$$")} title="Big Spender" />
     </View>
   );
 };

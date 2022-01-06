@@ -20,9 +20,9 @@ export default () => {
     }
   };
 
-  //   useEffect(() => {
-  //     searchApi("pasta");
-  //   }, []);
+  useEffect(() => {
+    searchApi("pasta");
+  }, []);
 
   return [searchApi, results, errorMessage];
 };
