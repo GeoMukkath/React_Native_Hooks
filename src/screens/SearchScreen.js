@@ -4,6 +4,7 @@ import yelp from "../screens/api/yelp";
 import SearchBar from "./components/SearchBar";
 import useResults from "./hooks/useResults";
 import ResultsList from "./components/ResultsList";
+import { ScrollView } from "react-native-gesture-handler";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
@@ -24,9 +25,11 @@ const SearchScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       <Text>We have found {results.length} results for your search term.</Text>
-      <ResultsList result={filterResults("$")} title="Cost Effective" />
-      <ResultsList result={filterResults("$$")} title="Bit Pricier" />
-      <ResultsList result={filterResults("$$$")} title="Big Spender" />
+      <ScrollView>
+        <ResultsList result={filterResults("$")} title="Cost Effective" />
+        <ResultsList result={filterResults("$$")} title="Bit Pricier" />
+        <ResultsList result={filterResults("$$$")} title="Big Spender" />
+      </ScrollView>
     </View>
   );
 };
