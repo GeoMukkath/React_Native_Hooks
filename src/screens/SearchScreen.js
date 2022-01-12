@@ -17,7 +17,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <>
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <SearchBar
         term={term}
@@ -30,7 +30,7 @@ const SearchScreen = () => {
         <ResultsList result={filterResults("$$")} title="Bit Pricier" />
         <ResultsList result={filterResults("$$$")} title="Big Spender" />
       </ScrollView>
-    </View>
+    </>
   );
 };
 
