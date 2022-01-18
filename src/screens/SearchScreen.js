@@ -24,7 +24,6 @@ const SearchScreen = () => {
         onTermChange={(newTerm) => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
       />
-      <Text>We have found {results.length} results for your search term.</Text>
       <ScrollView>
         <ResultsList result={filterResults("$")} title="Cost Effective" />
         <ResultsList result={filterResults("$$")} title="Bit Pricier" />
