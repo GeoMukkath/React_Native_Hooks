@@ -24,7 +24,7 @@ const navigator = createStackNavigator(
     Text: TextScreen,
     Box: BoxScreen,
     Search: SearchScreen,
-    ResulstShow: ResultsShowScreen,
+    ResultShow: ResultsShowScreen,
   },
   {
     initialRouteName: "Search",
